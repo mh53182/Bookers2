@@ -1,5 +1,27 @@
+<h2>User info</h2>
+
+<%= image_tag @user.get_profile_image(100,100) %>
+
+<table>
+  <tr>
+    <td>name</td>
+    <td><%= @user.name %></td>
+  </tr>
+  <tr>
+    <td>introduction</td>
+    <td><%= @user.introduction %></td>
+  </tr>
+</table>
+
+
+<%= link_to edit_user_path(@user.id) do %>
+  <i class="fa-solid fa-user-gear"></i>
+<% end %>
+
+
+
 <h2>New book</h2>
-<%= form_with model: @book do |f| %>
+<%= form_with model: @book_new do |f| %>
   Title
   <%= f.text_field :title %>
 
@@ -9,10 +31,29 @@
 <% end %>
 
 
+<h2>Books</h2>
 
-
-<% @books.each do |book| %>
-  <%= book.title %>
-  <%= book.body %>
-  <%= book.user_id %>
-<% end %>
+<table>
+  <tr>
+    <th></th>
+    <th>Title</th>
+    <th>opinion</th>
+  </tr>
+    <% @books.each do |book| %>
+      <tr>
+        <td>
+          <%= link_to user_path(book.user.id) do %>
+            <%= image_tag book.user.get_profile_image(80,80) %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to book_path(book.id)do %>
+            <%= book.title %>
+          <% end %>
+        </td>
+        <td>
+          <%= book.body %>
+        </td>
+      </tr>
+    <% end %>
+</table>
