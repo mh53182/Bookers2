@@ -4,9 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
- has_many :books, dependent: :destroy
+  has_many :books, dependent: :destroy
 
   has_one_attached :profile_image
+
+  validates_length_of :name, minimum: 2, maximum: 20
+  validates_length_of :introduction, maximum: 50, too_long: 'Introduction is too long (maximum is 50 characters)'
 
   def get_profile_image(width, height)
     unless profile_image.attached?

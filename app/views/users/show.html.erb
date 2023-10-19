@@ -44,7 +44,9 @@
           <% end %>
         </td>
         <td>
-          <%= book.title %>
+          <%= link_to book_path(book.id) do %>
+            <%= book.title %>
+          <% end %>
         </td>
         <td>
           <%= book.body %>

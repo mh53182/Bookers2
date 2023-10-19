@@ -3,7 +3,7 @@
   <head>
     <title>Bookers2</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -29,13 +29,23 @@
       <% end %>
 
     </header>
-    
+     <%= flash[:notice] %>
+
+    <% if @book.errors.any? %>
+      <%= @book.errors.count %>errors prohibited this obj from being saved:
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
     <!--あとでサイドバー化する?-->
-    
+
 
 
     <%= yield %>
-    
+
     <p>CopyRight Infratop.inc</p>
   </body>
 </html>

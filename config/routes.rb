@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   # ↑deviseを使用する際、URLに"users"を含むよ、の意
 
-  resources :books, only: [:create, :index, :show, :update, :destroy]
+  resources :books, only: [:create, :index, :show, :update, :edit, :destroy]
   resources :users, only: [:index, :show, :edit, :update]
 
   # get 'books/index'
