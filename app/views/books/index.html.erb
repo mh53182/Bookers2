@@ -1,35 +1,13 @@
-<h2>User info</h2>
+<%# if @book.errors.any? %>
+  <%#= @book.errors.count %>errors prohibited this obj from being saved:エラーメッセージ修正中
+  <!--<ul>-->
+    <%# @book.errors.full_messages.each do |message| %>
+      <li><%#= message %></li>
+    <%# end %>
+  <!--</ul>-->
+<%# end %>
 
-<%= image_tag @user.get_profile_image(100,100) %>
-
-<table>
-  <tr>
-    <td>name</td>
-    <td><%= @user.name %></td>
-  </tr>
-  <tr>
-    <td>introduction</td>
-    <td><%= @user.introduction %></td>
-  </tr>
-</table>
-
-
-<%= link_to edit_user_path(@user.id) do %>
-  <i class="fa-solid fa-user-gear"></i>
-<% end %>
-
-
-
-<h2>New book</h2>
-<%= form_with model: @book_new do |f| %>
-  Title
-  <%= f.text_field :title %>
-
-  Opinion
-  <%= f.text_area :body %>
-  <%= f.submit "Create Book" %>
-<% end %>
-
+<%= render 'layouts/userinfo_newbook', user: @user, book_new: @book_new %>
 
 <h2>Books</h2>
 
