@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   root to: 'homes#top'
-  get 'homes/about' => "homes#about",as: 'about'
+  get 'home/about' => "homes#about",as: 'about'
+
+
   devise_for :users
   # ↑deviseを使用する際、URLに"users"を含むよ、の意
 
